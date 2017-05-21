@@ -1,0 +1,59 @@
+/* reset */
+*{
+	margin: 0;
+	padding: 0;
+	font-size: 100%;
+	outline: none;
+	box-sizing: border-box;
+}
+body{
+	background-color: azure;
+}
+a{
+	text-decoration: none;
+}
+ul{list-style: none;}
+img{max-width: 100%}
+@media screen and (max-width: 600px) {
+  .wrapper {
+   background-color: #f5f5f5;
+   
+  }
+}
+form {
+	background-color: azure;
+	}
+.camposVenda{
+	width:35px;height:35px;
+}
+#cabecalho{
+	background-color: #601805;
+	color: white;
+	font-size: 110%
+	
+}
+#botoes{
+	width: 100%;
+}
+.titulos{
+	font-weight: bold;
+}
+#campoBusca{
+	width: 100%;
+}
+#botaoSair{
+	float: right;
+	margin-right: 2%;
+}
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg .tg-yw4l{vertical-align:top}
+@media screen and (max-width: 767px) {.tg {width: auto !important;}.tg col {width: auto !important;}.tg-wrap {overflow-x: auto;-webkit-overflow-scrolling: touch;}}
+label[for="cnpj"]{
+	margin-left: 10%;
+	
+}
+input[id="pessoaJ"]{
+	margin-bottom: 2%;
+}

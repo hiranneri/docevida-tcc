@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	  xmlns:p="http://primefaces.org/ui">
+ <h:head>
+	<meta charset="UTF-8"/>
+	<title>Confirmação do Pedido</title>
+</h:head>
+<h:body>
+	
+	<h:form id="formConfirmar">
+	<p:growl id="growl" showDetail="true" sticky="true"/>
+		<h:outputText value="Confirmação do Pedido"></h:outputText><br></br><br></br>
+		<h:outputText value="Data do Pedido:  "/>
+    	<h:outputText value="#{EfetuarPedidoBean.strDataAtual}"></h:outputText>
+    	<br></br>
+    	<br></br>
+    	<p:outputLabel for="dataEntrega" value="Data da Entrega:  " />
+        <h:outputText id="dataEntrega" value="#{EfetuarPedidoBean.strDataDaEntrega}"/>
+    	<br></br>
+    	<br></br>
+        <h:outputText value="Cliente: "></h:outputText>
+    	<h:outputText value="#{EfetuarPedidoBean.cliente.nome}" id="cliente" ></h:outputText>
+    	<br></br>
+    	<br></br>
+    	<h:outputText value="Itens"></h:outputText>
+    	<br></br>
+    	<br></br>
+    	<p:dataTable value="#{EfetuarPedidoBean.pedido.itensDoPedido}" var="item" dynamic="true" 
+        id="tblProdutos" emptyMessage="Nenhum Produto Adicionado"  rows="15" paginator="true" 
+        paginatorAlwaysVisible="false" paginatorPosition="bottom">
+        
+	  		<p:column headerText="Mercadoria">
+	  			<h:outputText value="#{item.produto.nmProduto}"></h:outputText>
+	  		</p:column>
+	  		<p:column headerText="Quantidade">
+	  			<h:outputText value="#{item.quantidade}"></h:outputText>
+	  		</p:column>
+	  		<p:column headerText="Valor Unitário">
+                  <h:outputText value="#{item.produto.valorUnitario}" />
+            </p:column>
+             
+            <p:column headerText="Subtotal">
+                  <h:outputText value="#{item.subTotal}"  />
+             </p:column>  
+  	</p:dataTable>
+  	<br></br>
+    <br></br>
+    <h:outputText value="Valor Total: R$ "></h:outputText>
+    <h:outputText value="#{EfetuarPedidoBean.pedido.valorTotal}"></h:outputText>
+    <br></br>
+    <br></br>	
+    <!-- Salvar no banco e redirecionar para a tela home.xhtml -->
+    <p:commandButton value="show" icon="ui-icon-check" actionListener="#{EfetuarPedidoBean.realizarNovoPedido}" />
+    <p:commandButton value="Cancelar"  icon="ui-icon-trash" action="#{EfetuarPedidoBean.cancelarPedido}" />
+    
+    </h:form>
+		 
+    		
+    </h:body>
+</html>

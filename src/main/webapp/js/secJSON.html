@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body>
+
+<h1>Customers</h1>
+<div id="id01"></div>
+
+<script>
+var xmlhttp = new XMLHttpRequest();
+var url = "http://localhost/DoceVida/php/pesquisa-produto.php";
+
+xmlhttp.onreadystatechange=function() {
+    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        myFunction(xmlhttp.responseText);
+    }
+}
+xmlhttp.open("GET", url, true);
+xmlhttp.send();
+
+function myFunction(response) {
+    var arr = JSON.parse(response);
+    var i;
+    var out = "<table>";
+
+    for(i = 0; i < arr.length; i++) {
+        out += "<tr><td>" +
+        arr[i].id_produto +
+        "</td><td>" +
+        arr[i].nm_produto +
+        "</td><td>" +
+        arr[i].dc_tamanho +
+        "</td></tr>";
+    }
+    out += "</table>";
+    document.getElementById("id01").innerHTML = out;
+}
+</script>
+
+</body>
+</html> 

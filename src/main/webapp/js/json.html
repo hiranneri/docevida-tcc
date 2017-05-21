@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+ <head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <title>Doce Vida</title>
+<!--
+ <script>
+ function executar() {
+ 	
+ 	var xmlhttp = new XMLHttpRequest();
+	var url = "http://localhost/DoceVida/php/pesquisa-produto.php";
+
+
+	xmlhttp.onreadystatechange = function() {
+	    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+	        var vetor = JSON.parse(xmlhttp.responseText);
+	        var saida = document.getElementById("said");
+	        saida.innerHTML = "Dados: " + vetor;
+	        
+	    }
+	};
+	xmlhttp.open("GET", url, true);
+	xmlhttp.send();
+	
+
+ }
+ 
+xmlhttp.open("GET", url, true);
+xmlhttp.send();
+ </script>-->
+ <script>
+ function executar() {
+var xmlhttp = new XMLHttpRequest();
+var url = "http://localhost/DoceVida/php/pesquisa-produto.php";
+
+xmlhttp.onreadystatechange = function() {
+    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        var myArr = JSON.parse(url);
+        myFunction(myArr);
+    }
+};
+xmlhttp.open("GET", url, true);
+xmlhttp.send();
+
+function myFunction(arr) {
+    var out = "";
+    var i;
+    for(i = 0; i < arr.length; i++) {
+        out += '<a href="' + arr[i].url + '">' + 
+        arr[i].display + '</a><br>';
+    }
+    document.getElementById("said").innerHTML = out;
+}
+ }
+</script>
+</head>
+<body>
+<p id="said">Teste</p>
+<input type="button" value="Executar" onclick="executar()">
+</body>
+</html>

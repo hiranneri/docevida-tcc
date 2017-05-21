@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+ <head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <title>Cadastro de Usuário</title>
+ <link rel="stylesheet" href="css/bootstrap.min.css"></link>
+  <link rel="stylesheet" href="css/estilo-cadastrousuario.css"></link>
+  <script src="js/jquery.min.js"></script>
+ <script src="js/bootstrap.min.js"></script>
+ <script>
+ 	function enviardados(){
+ 		alert("Usuário salvo com sucesso");
+ 	}
+ </script>
+
+</head>
+<body>
+	<header>
+		<img src="img/docevida.png" alt="Logo Doce Vida" id="logoDoceVida">
+		<span id="cliente">CADASTRO DE USUÁRIO</span>
+	</header>
+	<section>
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12">
+				
+					<form action="CadastroUsuarioServlet" method="post" onsubmit="enviardados();" name="cliente">
+						
+			
+						(*) Campos Obrigatórios<br><br>
+		
+						<div class="form-group">
+							<label for="nome" class="col-xs-2 control-label">*Nome: </label>
+							<div class="col-xs-12">
+								<input type="text" id="nome" name="nome" class="form-control" placeholder="Nome"  required/> 
+							</div>
+						</div>			
+						
+						
+						<div class="form-group">
+							<label for="senha" class="col-xs-2 control-label">*Senha: </label>
+							<div class="col-xs-12">
+							<input type="password" name="senha" id="senha" class="form-control" placeholder="Senha" required/>
+							</div>
+						</div>
+						
+					
+							
+				
+						<button type="submit" value="Salvar" class="btn btn-success btn-lg">Salvar</button>
+						
+						
+					</form>
+					
+						</div>
+					</div>
+				</div>
+		</section>
+		<div id="imgFooter">
+			<img src="img/reload.png" alt="Logo Reload" id="logoReload">
+		</div>
+	<footer>
+		© 2016 | RELOAD – Todos os direitos reservados
+		
+		
+	</footer>
+	
+</body>
+</html>

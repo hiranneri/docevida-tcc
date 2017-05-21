@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+ <head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <title>Cadastro de Clientes</title>
+ <link rel="stylesheet" href="css/bootstrap.min.css"></link>
+  <link rel="stylesheet" href="css/estilo-cadastrocliente.css"></link>
+  <script src="js/jquery.min.js"></script>
+ <script src="js/bootstrap.min.js"></script>
+ <script src="js/controllerCadastroCliente.js"></script>
+
+</head>
+<body>
+	<header>
+		<img src="img/docevida.png" alt="Logo Doce Vida" id="logoDoceVida">
+		<span id="cliente">CADASTRO DE CLIENTES</span>
+	</header>
+	<section>
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12">
+				
+					<form action="CadastroClienteServlet" method="post" onsubmit="enviardados();" name="cliente">
+						
+			
+						(*) Campos Obrigatórios<br><br>
+			<!--
+						<div class="form-group">
+									<label for="nome" class="col-xs-2 control-label">Código</label>
+									<div class="col-xs-10">
+										<input type="text" class="form-control" id="codigo" name="codigo" placeholder="Digite o código da mercadoria"/>
+										
+									</div>
+								</div>
+			-->
+
+						<div class="form-group">
+							<label for="nome" class="col-xs-2 control-label">*Nome Completo: </label>
+							<div class="col-xs-12">
+								<input type="text" id="nome" name="nome" class="form-control" placeholder="Nome"  required/> 
+							</div>
+						</div>			
+						
+						
+						<div class="form-group">
+							<label for="cpf" class="col-xs-12 control-label">*CPF: </label>
+							<div class="col-xs-12">
+								<input type="text" name="cpf" id="cpf" class="form-control" size="11" placeholder="CPF" required/>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label for="endereco" class="col-xs-12 control-label">*Endereço: </label>
+							<div class="col-xs-12">
+								<input type="text" id="endereco" name="endereco" size="20" class="form-control" placeholder="Endereço" required />
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="num" class="col-xs-12 control-label">*Número: </label>
+							<div class="col-xs-12">
+								<input type="number" name="numero" id="numero" min="1" size="5" class="form-control"required/> 
+							</div>
+						</div>
+
+						<div class="form-group">		
+							<label for="bairro" class="col-xs-12 control-label">*Bairro: </label>
+							<div class="col-xs-12">
+								<input type="text" name="bairro" id="bairro" size="30" placeholder="Bairro" class="form-control" required/>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="cidade" class="col-xs-12 control-label">*Cidade: </label>
+							<div class="col-xs-12">
+								<input type="text" name="cidade" id="cidade" size="20" class="form-control" placeholder="Cidade" required/>
+							</div>
+						</div>
+
+
+						<div class="form-group">
+							<label for="estado" class="col-xs-12 control-label">*Estado: </label>
+							<div class="col-xs-12">
+								<input type="text" name="estado" id="estado" size="30" class="form-control" placeholder="Estado" required/> 
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="telefone" class="col-xs-12 control-label">Telefone: </label>
+							<div class="col-xs-12">
+								<input type="text" name="telefone" id="telefone" size="20" class="form-control" placeholder="Telefone" required/>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="celular" class="col-xs-12 control-label">*Celular: </label>
+							<div class="col-xs-12">
+								<input type="text" name="celular" id="celular" size="20" class="form-control" placeholder="Celular" required/>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="cEmail" class="col-xs-12 control-label">E-mail: </label>
+							<div class="col-xs-12">
+								<input type="email" name="email" id="email" size="25" class="form-control" placeholder="Email"/>
+							</div>
+						</div>
+							
+				
+						<button type="submit" value="Salvar" class="btn btn-success btn-lg">Salvar</button>
+						
+						<button type="button" value="Cancelar" class="btn btn-danger btn-lg" onclick="voltar();">Cancelar</button>
+						
+					</form>
+					
+						</div>
+					</div>
+				</div>
+		</section>
+		<div id="imgFooter">
+			<img src="img/reload.png" alt="Logo Reload" id="logoReload">
+		</div>
+	<footer>
+		© 2016 | RELOAD – Todos os direitos reservados
+		
+		
+	</footer>
+	
+</body>
+</html>

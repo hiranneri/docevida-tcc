@@ -1,0 +1,59 @@
+body{
+	background-color: rgb(174,211,246);
+}
+header{
+	margin-bottom: 2%;
+}
+img[id="logoDoceVida"]{
+	margin-left: 2%;
+	width: 10%;
+	margin-top: 2%;
+	margin-right: 30%
+
+	
+}
+span[id="cliente"]{
+	font-weight: bolder;
+	font-size: 16px;
+	font-family: "Calibri";
+}
+
+label{
+	margin-top: 1%;
+}
+input[type="text"]{
+	width: 50%;
+}
+select[name="tam"]{
+	width: 30%;
+}
+input[type="number"]{
+	width: 10%;
+}
+textarea[id="obs"]{
+	width: 50%;
+}
+
+button{
+	margin-top: 2%;	
+	
+	width: 20%;
+}
+div[id="imgFooter"]{
+	float: left;
+	margin-top: 2%;
+	background-color: black;
+	width: 100%;
+	
+}
+img[id="logoReload"]{
+	margin-top: 1%;
+	margin-left: 1%;
+	width: 12%;
+}
+footer{
+	
+	text-align: center;
+	
+	
+}
