@@ -21,13 +21,14 @@ public class SelecaoClienteBean implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	private List<Cliente>clientes;
-	private String valor;
+	private String valorPesquisaCliente;
 	private ClienteDAO service;
 	private int numeroRegistrosLocalizados=0;
 	
 	public SelecaoClienteBean(){
 	
 		this.numeroRegistrosLocalizados = 0;
+		this.valorPesquisaCliente="";
 	}
 	
 	public List<Cliente> getClientes(){
@@ -37,13 +38,15 @@ public class SelecaoClienteBean implements Serializable{
 	public void setClientes(List<Cliente> clientes) {
 		this.clientes = clientes;
 	}
-	public String getValor() {
-		return valor;
-	}
-	public void setValor(String valor) {
-		this.valor = valor;
-	}
 		
+	public String getValorPesquisaCliente() {
+		return valorPesquisaCliente;
+	}
+
+	public void setValorPesquisaCliente(String valorPesquisaCliente) {
+		this.valorPesquisaCliente = valorPesquisaCliente;
+	}
+
 	public int getNumeroRegistrosLocalizados() {
 		return this.numeroRegistrosLocalizados;
 	}
@@ -56,7 +59,7 @@ public class SelecaoClienteBean implements Serializable{
 		System.out.println("pesquisando...");
 		clientes = new ArrayList<>();
 		this.service = new ClienteDAO();
-		setClientes(service.findByName(this.valor));
+		setClientes(service.findByName(this.valorPesquisaCliente));
 		this.setNumeroRegistrosLocalizados(this.getClientes().size());
 		for(Cliente c:this.clientes){
 			System.out.println(c.getEndereco());

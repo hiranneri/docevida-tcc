@@ -138,10 +138,7 @@ public class EfetuarPedidoBean implements Serializable {
 			e.printStackTrace();
 		}	
 	}
-	public void cancelarPedido(){
-		
-		redirecionar("home.jsp");
-	}
+	
 	public void inicio(){
 		destruirSessao();
 		redirecionar("home.jsp");

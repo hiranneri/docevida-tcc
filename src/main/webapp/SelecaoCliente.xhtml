@@ -11,7 +11,7 @@
 <h:body>
 	<h:form id="formCliente">
 		<h:outputText value="Pesquisar: "></h:outputText>
-		<h:inputText value="#{SelecaoClienteBean.valor}"></h:inputText>
+		<h:inputText value="#{SelecaoClienteBean.valorPesquisaCliente}"></h:inputText>
 		<p:commandButton id="btnBuscarCliente" icon="ui-icon-search" value="Buscar" title="Pesquisar Cliente"
 		actionListener="#{SelecaoClienteBean.pesquisarCliente}" update="tblClientes" ajax="false">
 		</p:commandButton>
