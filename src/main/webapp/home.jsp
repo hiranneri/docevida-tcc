@@ -9,7 +9,7 @@
  <meta name="viewport" content="width=device-width, initial-scale=1">
  <title>Doce Vida</title>
  <link rel="stylesheet" href="css/bootstrap.css">
- <link rel="stylesheet" href="css/estilo-home.css"></link>
+ <link rel="styleshet" href="css/index2.css">
  <script src="js/bootstrap.js"></script>
  <script src="js/jquery.min.js"></script> 
  <script src="js/controllerhome.js"></script>
@@ -19,66 +19,60 @@
 		<header>
 			<img src="img/docevida.png" alt="Logo Doce Vida" id="logoDoceVida"/>
 		</header>
-		<section>
-			
-			<!--
-			<strong>Pedido</strong>
-			<center>
-			<a href="efetuar_pedido.html"> 
-			<input type="submit" name="efetuarpedido" style="width:100%;height:50px" value="Efetuar Pedido">
-			</a> </input>
-			</center>
-			-->
-			<label>Usuário: ${nomeUsuario}</label>
-			<h3>Pedido</h3>
-			<div class="container">
-			<div class="col-xs-12 col-md-12">
-				<div class="row">
-					<button type="button" class="btn btn-primary btn-md" name="efetuarpedido" value="Efetuar Pedido" onclick="efetuarPedido();">Efetuar Pedido</button>
-				
-				</div>
-			</div>
-			</div>
-		</section>
-		<h3>Produto</h3>
-			<div class="container">
-			<div class="col-xs-12 col-md-12">
-				<div class="row">
-					<button type="button" class="btn btn-primary btn-md" name="cadastrarproduto" value="Cadastrar Produto" onclick="cadastraProduto();">Cadastrar Produto</button>
-				
-				</div>
-			</div>
-			</div>
-		<section>
-			<div class="container">
-				<div class="row">
-					<button type="button" class="btn btn-primary btn-md" name="pesquisarproduto" value="Pesquisar Produto" onclick="pesquisaProduto();">Pesquisar Produto</button>
-				</div>
-			</div>
-			
-			<h3>Cliente</h3>
-			<div class="container">
-			<div class="col-xs-12 col-md-12">
-				<div class="row">
-					<button type="button" class="btn btn-primary btn-md" name="cadastrarcliente"  value="Cadastrar Cliente" onclick="cadastraCliente();">Cadastrar Cliente</button>
-					
-				</div>
-			</div>
-			</div>
-		</section>
-		<section>
-			<div class="container">
-			<div class="col-xs-12 col-md-12">
-				<div class="row">
-					<button type="button" class="btn btn-primary btn-md" name="pesquisarcliente" value="Pesquisar Cliente" onclick="pesquisaCliente();">Pesquisar Cliente</button>
-					
-				</div>
-			</div>
-			</div>
-			
-		</section>
 		
-		
-	
+			
+			<div class="container">
+			<div class="row">
+				<div id="pedido">
+					
+					<label for="btPedido">Pedido</label><br>
+					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+			
+						<button id="btPedido" onclick="efetuarPedido();">Pedido</button>
+					
+
+				</div>
+			</div>
+		</div>
+		<br>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div id="produtos">
+					
+					<label for="btCadastroProduto">Produtos</label><br>
+					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+			
+						<button id="btCadastrarProduto" onclick="cadastrarProduto();">Cadastrar Produto</button>
+					
+			
+					
+			
+						<button id="btPesquisarProduto" onclick="pesquisarProduto();">Pesquisar Produto</button>
+					
+					
+
+				</div>
+			</div>
+		</div>
+		</div>
+		<br>
+		<div class="container">
+		<div class="row">
+			
+				<div id="clientes">
+					<label for="btCadastroCliente">Clientes</label><br>
+					<div class="col-xs-5 col-md-5">
+						<button id="btCadastrarCliente" onclick="cadastraCliente();">Cadastrar Cliente</button>
+					
+					
+						<button id="btPesquisarCliente"onclick="pesquisarCliente();">Pesquisar Cliente</button>
+					
+					<br><br>
+				</div>
+			</div>
+		</div>
+		</div>
+			
 </body>
 </html>	

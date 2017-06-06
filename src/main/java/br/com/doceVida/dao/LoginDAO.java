@@ -52,11 +52,11 @@ public class LoginDAO {
 		try{
 		// TODO Auto-generated method stub
 		ps = con.prepareStatement(
-				"INSERT INTO Usuario (nm_usuario, ds_senha)"
-				+ "VALUES (?,?)");
+				"INSERT INTO Usuario (nm_usuario, ds_senha,st_status)"
+				+ "VALUES (?,?,?)");
 		ps.setString(1, user.getNome());
 		ps.setString(2, user.getSenha());
-		
+		ps.setBoolean(3, true);
 		
 		ps.executeUpdate();
 		ps.close();

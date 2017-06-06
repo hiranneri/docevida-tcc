@@ -34,7 +34,7 @@ public class PesquisarProdutosServlet extends HttpServlet {
 		produtosLocalizados =  dadosPesquisa.listar(parametroPesquisa,dadoPesquisa);
 		request.setAttribute("listaProdutos", produtosLocalizados);
 		request.setAttribute("resultadoPesquisa", produtosLocalizados.size());
-		request.getRequestDispatcher("pesquisar-itens.jsp").forward(request, response);
+		request.getRequestDispatcher("pesquisar-produtos.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

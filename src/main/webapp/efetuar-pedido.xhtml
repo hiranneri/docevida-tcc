@@ -9,26 +9,28 @@
 	
 <h:head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="#{facesContext.externalContext.requestContextPath}/css/estilo-pedido.css" media="screen" />
     <title>Efetuar Pedido</title>
 </h:head>
 <h:body>
-    <h3>Pedido</h3>
+	<img src="img/docevida.png" id="logo"></img>
+    <h1>Pedido</h1>
     
  <h:form id="form">
    
-    <h:outputText value="Data do Pedido"/>
+    <h:outputText value="Data do Pedido: " class="labels"/>
     <!-- Pegar data/hora do sistema--> 
-    <h:outputText value="#{EfetuarPedidoBean.strDataAtual}"></h:outputText>
+    <h:outputText value="#{EfetuarPedidoBean.strDataAtual}" class="labels"></h:outputText>
     <br></br>
     <br></br>
-    <p:outputLabel for="dataEntrega" value="Data da Entrega:" />
+    <p:outputLabel for="dataEntrega" value="Data da Entrega:" class="labels"/>
     <p:calendar id="dataEntrega" value="#{EfetuarPedidoBean.dataDaEntrega}" mindate="#{EfetuarPedidoBean.dataAtual}"
     	required="true" />
     <br></br>
     <br></br>
         
-    		<h:outputText value="Cliente: "></h:outputText>
-    		<h:outputText value="#{EfetuarPedidoBean.cliente.nome}" id="cliente" ></h:outputText>
+    		<h:outputText value="Cliente: " class="labels"></h:outputText>
+    		<h:outputText value="#{EfetuarPedidoBean.cliente.nome}" id="cliente" class="labels"></h:outputText>
     		<p:commandButton icon="ui-icon-search" title="Pesquisar Clientes" 
  				action="#{EfetuarPedidoBean.abrirDialogo}" process="@this">
 	 			
@@ -39,7 +41,7 @@
     <br></br>
     <h:panelGroup id="panelProduto">
         <!--Produto -->
-        <p:outputLabel for="produto" value="Produto:"></p:outputLabel>
+        <p:outputLabel for="produto" value="Produto:" class="labels"></p:outputLabel>
          <h:inputText id="produto" value="#{EfetuarPedidoBean.produto.nmProduto}" 
          rendered="#{EfetuarPedidoBean.produto!=null}" 
          >
@@ -97,8 +99,8 @@
   	</p:dataTable>
   	<br></br>
     <br></br>
-    <h:outputText value="Valor Total: R$ "></h:outputText>
-    <h:outputText value="#{EfetuarPedidoBean.pedido.valorTotal}"></h:outputText>
+    <h:outputText value="Valor Total: R$ " class="cifrao"></h:outputText>
+    <h:outputText value="#{EfetuarPedidoBean.pedido.valorTotal}" class="valorTotal"></h:outputText>
     <br></br>
     <br></br>	
     <p:commandButton value="Salvar Pedido"  icon="ui-icon-check" action="#{EfetuarPedidoBean.confirmarPedido}" 

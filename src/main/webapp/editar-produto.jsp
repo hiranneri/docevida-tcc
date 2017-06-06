@@ -17,6 +17,8 @@
 <body>
 	<header>
 		<img src="img/docevida.png" alt="Logo Doce Vida" id="logoDoceVida">
+		<br>
+		<br>
 		<span id="cliente">EDIÇÃO DE PRODUTOS</span>
 	</header>
 	<section>
@@ -30,31 +32,33 @@
 						(*) Campos Obrigatórios<br><br>
 			
 						<div class="form-group">
-							<label for="id" class="col-xs-2 control-label">*ID: </label>
+							<label for="id" class="col-xs-2 control-label labels" >*ID: </label>
 							<div class="col-xs-12">
 								<input type="text" id="id" name="id" class="form-control" value="${produto.id}" disabled="disabled"/> 
 							</div>
 						</div>	
 
 						<div class="form-group">
-							<label for="nmproduto" class="col-xs-2 control-label">*Nome do Produto: </label>
+							<label for="nmproduto" class="col-xs-2 control-label labels">*Nome do Produto: </label>
 							<div class="col-xs-12">
-								<input type="text" id="nmproduto" name="nmproduto" class="form-control" placeholder="Nome do produto"value="${produto.nmproduto}"  required/> 
+								<input type="text" id="nmproduto" name="nmproduto" class="form-control" placeholder="Nome do produto"
+									value="${produto.nmProduto}"  required/> 
 							</div>
 						</div>			
 						
 						
 						<div class="form-group">
-							<label for="vlunit" class="col-xs-12 control-label">*Valor Unitário: </label>
+							<label for="vlunit" class="col-xs-12 control-label labels">*Valor Unitário: </label>
 							<div class="col-xs-12">
-								<input type="text" name="vlunit" id="vlunit" class="form-control" size="11" placeholder="R$" value="${produto.vlunit}" required/>
+								<input type="text" name="vlunit" id="vlunit" class="form-control" size="11" placeholder="R$" 
+									value="${produto.valorUnitario}" required/>
 							</div>
 						</div>
 						
 						<div class="form-group">
-							<label for="tam" class="col-xs-12 control-label">*Tamanho: </label>
+							<label for="tam" class="col-xs-12 control-label labels">*Tamanho: </label>
 							<div class="col-xs-12">
-								 <select class="form-control" name="tam" value="${produto.tam}">
+								 <select class="form-control" name="tam" value="${produto.tamanho}">
 									<option value="Pequeno">Pequeno</option>
 									<option value="Médio">Médio</option>
 									<option value="Grande">Grande</option>
@@ -63,14 +67,15 @@
 						</div>
 
 						<div class="form-group">
-							<label for="quant" class="col-xs-12 control-label">*Quantidade: </label>
+							<label for="quant" class="col-xs-12 control-label labels">*Quantidade: </label>
 							<div class="col-xs-12">
-								<input type="number" name="quant" id="quant" min="1" size="5"  value="${produto.quant}"class="form-control" required/> 
+								<input type="number" name="quant" id="quant" min="1" size="5"  value="${produto.quantidadeEstoque}"
+									class="form-control" required/> 
 							</div>
 						</div>
 
 						<div class="form-group">
-						    <label for="obs" class="col-xs-12 control-label">Observação</label>
+						    <label for="obs" class="col-xs-12 control-label labels">Observação</label>
 						    <div class="col-xs-12">
 						    <% String textAreaValue = (String) session.getAttribute("observacao"); %>
 						    <textarea name="obs" id="obs" cols="5" rows="5" class="form-control"><%=textAreaValue%></textarea>
@@ -87,14 +92,7 @@
 					</div>
 				</div>
 		</section>
-		<div id="imgFooter">
-			<img src="img/reload.png" alt="Logo Reload" id="logoReload">
-		</div>
-	<footer>
-		© 2016 | RELOAD – Todos os direitos reservados
 		
-		
-	</footer>
 	
 </body>
 </html>

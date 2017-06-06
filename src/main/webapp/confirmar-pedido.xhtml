@@ -7,25 +7,29 @@
  <h:head>
 	<meta charset="UTF-8"/>
 	<title>Confirmação do Pedido</title>
+	<link rel="stylesheet" type="text/css" href="#{facesContext.externalContext.requestContextPath}/css/estilo-pedido.css" media="screen" />
+	
 </h:head>
 <h:body>
-	
+	<img src="img/docevida.png" id="logo"></img>
+    <h1>Confirmação do Pedido</h1>
+    
 	<h:form id="formConfirmar">
 	<p:growl id="growl" showDetail="true" sticky="true"/>
-		<h:outputText value="Confirmação do Pedido"></h:outputText><br></br><br></br>
-		<h:outputText value="Data do Pedido:  "/>
-    	<h:outputText value="#{EfetuarPedidoBean.strDataAtual}"></h:outputText>
+		
+		<h:outputText value="Data do Pedido: " class="labels"/>
+    	<h:outputText value="#{EfetuarPedidoBean.strDataAtual}" class="labels"></h:outputText>
     	<br></br>
     	<br></br>
-    	<p:outputLabel for="dataEntrega" value="Data da Entrega:  " />
-        <h:outputText id="dataEntrega" value="#{EfetuarPedidoBean.strDataDaEntrega}"/>
+    	<p:outputLabel for="dataEntrega" value="Data da Entrega:  " class="labels"/>
+        <h:outputText id="dataEntrega" value="#{EfetuarPedidoBean.strDataDaEntrega}" class="labels"/>
     	<br></br>
     	<br></br>
-        <h:outputText value="Cliente: "></h:outputText>
-    	<h:outputText value="#{EfetuarPedidoBean.cliente.nome}" id="cliente" ></h:outputText>
+        <h:outputText value="Cliente: " class="labels"></h:outputText>
+    	<h:outputText value="#{EfetuarPedidoBean.cliente.nome}" id="cliente" class="labels"></h:outputText>
     	<br></br>
     	<br></br>
-    	<h:outputText value="Itens"></h:outputText>
+    	<h:outputText value="Itens" class="labels"></h:outputText>
     	<br></br>
     	<br></br>
     	<p:dataTable value="#{EfetuarPedidoBean.pedido.itensDoPedido}" var="item" dynamic="true" 
@@ -48,12 +52,12 @@
   	</p:dataTable>
   	<br></br>
     <br></br>
-    <h:outputText value="Valor Total: R$ "></h:outputText>
-    <h:outputText value="#{EfetuarPedidoBean.pedido.valorTotal}"></h:outputText>
+    <h:outputText value="Valor Total: R$ " class="cifrao"></h:outputText>
+    <h:outputText value="#{EfetuarPedidoBean.pedido.valorTotal}" class="valorTotal"></h:outputText>
     <br></br>
     <br></br>	
     <!-- Salvar no banco e redirecionar para a tela home.xhtml -->
-    <p:commandButton value="show" icon="ui-icon-check" actionListener="#{EfetuarPedidoBean.realizarNovoPedido}" />
+    <p:commandButton value="Efetuar Pedido" icon="ui-icon-check" actionListener="#{EfetuarPedidoBean.realizarNovoPedido}" />
     <p:commandButton value="Cancelar"  icon="ui-icon-trash" action="#{EfetuarPedidoBean.cancelarPedido}" />
     
     </h:form>

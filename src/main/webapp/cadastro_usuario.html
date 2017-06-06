@@ -1,70 +1,106 @@
 <!DOCTYPE html>
-<html>
- <head>
- <meta charset="utf-8">
- <meta name="viewport" content="width=device-width, initial-scale=1">
- <title>Cadastro de Usuário</title>
- <link rel="stylesheet" href="css/bootstrap.min.css"></link>
-  <link rel="stylesheet" href="css/estilo-cadastrousuario.css"></link>
-  <script src="js/jquery.min.js"></script>
- <script src="js/bootstrap.min.js"></script>
- <script>
- 	function enviardados(){
- 		alert("Usuário salvo com sucesso");
- 	}
- </script>
+<html lang="en">
 
-</head>
-<body>
-	<header>
-		<img src="img/docevida.png" alt="Logo Doce Vida" id="logoDoceVida">
-		<span id="cliente">CADASTRO DE USUÁRIO</span>
-	</header>
-	<section>
-		<div class="container">
-			<div class="row">
-				<div class="col-xs-12">
-				
-					<form action="CadastroUsuarioServlet" method="post" onsubmit="enviardados();" name="cliente">
-						
-			
-						(*) Campos Obrigatórios<br><br>
-		
-						<div class="form-group">
-							<label for="nome" class="col-xs-2 control-label">*Nome: </label>
-							<div class="col-xs-12">
-								<input type="text" id="nome" name="nome" class="form-control" placeholder="Nome"  required/> 
-							</div>
-						</div>			
-						
-						
-						<div class="form-group">
-							<label for="senha" class="col-xs-2 control-label">*Senha: </label>
-							<div class="col-xs-12">
-							<input type="password" name="senha" id="senha" class="form-control" placeholder="Senha" required/>
-							</div>
-						</div>
-						
-					
-							
-				
-						<button type="submit" value="Salvar" class="btn btn-success btn-lg">Salvar</button>
-						
-						
-					</form>
-					
-						</div>
-					</div>
-				</div>
-		</section>
-		<div id="imgFooter">
-			<img src="img/reload.png" alt="Logo Reload" id="logoReload">
-		</div>
-	<footer>
-		© 2016 | RELOAD – Todos os direitos reservados
-		
-		
-	</footer>
-	
-</body>
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Cadastro de Usuário</title>
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" href="assets/css/form-elements.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="css/estilo-cadastrousuario.css">
+        
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <!-- Favicon and touch icons -->
+        <link rel="shortcut icon" href="assets/ico/favicon.png">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+
+    </head>
+
+    <body>
+        <header>
+            <img src="img/docevida.png" alt="Logo Doce Vida" id="logoDoceVida"/>
+            
+        </header>
+        <!-- Top content -->
+        <div class="top-content">
+        	
+            <div class="inner-bg">
+                <div class="container">
+                	
+                    <div class="row">
+                        <div class="col-sm-5" id="boxLogin">
+                        	
+                        	<div class="form-box">
+	                        	<div class="form-top">
+	                        		<div class="form-top-left">
+	                        			<h3>Cadastro de Usuário</h3>
+	                            		<p>Diggite um novo usuário e senha:</p>
+	                        		</div>
+	                        		<div class="form-top-right">
+	                        			<i class="fa fa-key"></i>
+	                        		</div>
+	                            </div>
+	                            <div class="form-bottom">
+				                    <form role="form" action="CadastroUsuarioServlet" method="post" class="login-form">
+				                    	<div class="form-group">
+				                    		<label class="sr-only" for="usuario">Usuário</label>
+				                        	<input type="text" name="nome" placeholder="Usuário..." class="form-username form-control" id="nome">
+				                        </div>
+				                        <div class="form-group">
+				                        	<label class="sr-only" for="form-password">Senha</label>
+				                        	<input type="password" name="senha" placeholder="Senha..." class="form-password form-control" id="senha">
+				                        </div>
+				                        <button type="submit" class="btn">Cadastrar</button>
+				                    </form>
+			                    </div>
+		                    </div>
+	                        
+                        </div>
+                        
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+
+        <!-- Footer -->
+        <footer>
+        	<div id="imgFooter">
+                <img src="img/reload.png" alt="Logo Reload" id="logoReload">
+            </div>
+
+        	
+        </footer>
+
+        <!-- Javascript -->
+        <script src="assets/js/jquery-1.11.1.min.js"></script>
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="assets/js/jquery.backstretch.min.js"></script>
+        <script src="assets/js/scripts.js"></script>
+        
+        <!--[if lt IE 10]>
+            <script src="assets/js/placeholder.js"></script>
+        <![endif]-->
+
+    </body>
+
 </html>

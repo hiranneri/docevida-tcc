@@ -33,22 +33,9 @@ public class ExcluirProdutoServlet extends HttpServlet {
 		int id2 = Integer.parseInt(id);
 		//ProdutoDAO excluirid = new ProdutoDAO();
 		daoProduto.excluir(id2);
-		request.getRequestDispatcher("pesquisar-itens.jsp").forward(request, response);
+		request.getRequestDispatcher("pesquisar-produtos.jsp").forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		/*String nmproduto= request.getParameter("id");
-		if(nmproduto.equals("")|| nmproduto==null){
-			nmproduto="0";
-		}
-		int id = Integer.parseInt(nmproduto);
-		//ProdutoDAO excluirid = new ProdutoDAO();
-		daoProduto.excluir(id);
-		//excluirid.excluir(id);
-		request.getRequestDispatcher("pesquisar-itens.jsp").forward(request, response);*/
-	}
+	
 	}
 

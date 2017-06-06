@@ -21,7 +21,7 @@ import br.com.doceVida.model.Produto;
 @WebServlet("/EditarProdutoServlet")
 public class EditarProdutoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	Produto item;
+	Produto produto;
     private DAOGenerico<Produto> produtoDAO = new ProdutoDAO();
     HttpSession session;   
   
@@ -32,17 +32,17 @@ public class EditarProdutoServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		session = request.getSession(true);
 		String id = request.getParameter("id");
-		item = produtoDAO.findById(id);
-		session.setAttribute("item", item);
-		session.setAttribute("observacao", item.getObservacao());
+		produto = produtoDAO.findById(id);
+		session.setAttribute("produto", produto);
+		session.setAttribute("observacao", produto.getObservacao());
 		
 			
-		request.getRequestDispatcher("editar-item.jsp").forward(request, response);
+		request.getRequestDispatcher("editar-produto.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		session = request.getSession(true);
-		Produto item = (Produto) session.getAttribute("item");
+		Produto produto = (Produto) session.getAttribute("produto");
 		
 		request.setCharacterEncoding("UTF-8");
 	
@@ -52,9 +52,9 @@ public class EditarProdutoServlet extends HttpServlet {
 		String vlunit = request.getParameter("vlunit");
 		String obs =request.getParameter("obs");
 		Produto produtoAlterado = new Produto();
-		System.out.println("ID "+item.getId());
+		System.out.println("ID "+produto.getId());
 		
-		produtoAlterado.setId(item.getId());
+		produtoAlterado.setId(produto.getId());
 		produtoAlterado.setNmProduto(nmproduto);
 		produtoAlterado.setTamanho(tam);
 		produtoAlterado.setObservacao(obs);

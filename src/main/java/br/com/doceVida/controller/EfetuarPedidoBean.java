@@ -44,7 +44,7 @@ public class EfetuarPedidoBean implements Serializable {
 		this.quantidadeDoItem = 1;
 		this.strDataAtual = dataSistema();
 	}
-	
+
 	public void clienteSelecionado(SelectEvent event ){
 		Cliente cliente = (Cliente) event.getObject();
 		
@@ -103,6 +103,60 @@ public class EfetuarPedidoBean implements Serializable {
 		
 		return dataFormatada.format(dataAtual);
 	}
+	public String confirmarPedido(){
+		this.pedido.setDataPedido(dataAtual);
+		this.pedido.setDataEntrega(dataDaEntrega);
+		if(this.cliente==null){
+			Cliente pedidoSemCliente = new Cliente();
+			pedidoSemCliente.setId(12);
+			pedidoSemCliente.setNome("-");
+			this.pedido.setCliente(pedidoSemCliente);
+		}else{
+			this.pedido.setCliente(cliente);
+		}
+	
+		//Redirecionar para a página confirmarPedido.xhtml
+		return "confirmar-pedido?faces-redirect=true"; 
+	}
+	//ConfirmarPedido
+	public void realizarNovoPedido(){
+		//DAO
+		PedidoDAO novoPedido = new PedidoDAO();
+		novoPedido.inserir(this.pedido);
+		mensagem();
+		redirecionar("pedido-realizado.xhtml");
+		
+		
+	}
+	public void redirecionar(String pagina){
+		try{
+			FacesContext facesContext = FacesContext.getCurrentInstance();
+			ExternalContext external = facesContext.getExternalContext();
+			external.redirect(pagina);
+		}catch (IOException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}	
+	}
+	public void cancelarPedido(){
+		
+		redirecionar("home.jsp");
+	}
+	public void inicio(){
+		destruirSessao();
+		redirecionar("home.jsp");
+	}
+	public void mensagem(){
+		System.out.println("Executou mensagem");
+		FacesMessage mensagem = new FacesMessage(FacesMessage.SEVERITY_INFO,"Sucesso","Pedido realizado com sucesso");
+		RequestContext.getCurrentInstance().showMessageInDialog(mensagem);
+	}
+	public void destruirSessao(){ 
+		
+		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove("EfetuarPedidoBean");
+		
+	}
+	
 	public String getStrDataAtual() {
 		return strDataAtual;
 	}
@@ -132,34 +186,6 @@ public class EfetuarPedidoBean implements Serializable {
 	public void setDataAtual(Date dataAtual) {
 		this.dataAtual = dataAtual;
 	}
-
-	
-	public String confirmarPedido(){
-		this.pedido.setDataPedido(dataAtual);
-		this.pedido.setDataEntrega(dataDaEntrega);
-		if(this.cliente==null){
-			Cliente clientePadrao = new Cliente();
-			clientePadrao.setId(12);
-			clientePadrao.setNome("-");
-			this.pedido.setCliente(clientePadrao);
-		}else{
-			this.pedido.setCliente(cliente);
-		}
-	
-		//Redirecionar para a página confirmarPedido.xhtml
-		return "confirmar-pedido?faces-redirect=true"; 
-	}
-	public void redirecionar(String pagina){
-		try{
-			FacesContext facesContext = FacesContext.getCurrentInstance();
-			ExternalContext external = facesContext.getExternalContext();
-			external.redirect(pagina);
-		}catch (IOException e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}	
-	}
-	
 	public Cliente getCliente() {
 		return cliente;
 	}
@@ -191,30 +217,5 @@ public class EfetuarPedidoBean implements Serializable {
 
 	public void setPedido(Pedido pedido) {
 		this.pedido = pedido;
-	}
-
-	//ConfirmarPedido
-	public void realizarNovoPedido(){
-		//DAO
-		PedidoDAO novoPedido = new PedidoDAO();
-		novoPedido.inserir(this.pedido);
-		mensagem();
-		redirecionar("home.jsp");
-		destruirSessao();
-		
-	}
-	public void cancelarPedido(){
-		
-		redirecionar("home.jsp");
-	}
-	public void mensagem(){
-		System.out.println("Executou mensagem");
-		FacesMessage mensagem = new FacesMessage(FacesMessage.SEVERITY_INFO,"Sucesso","Pedido realizado com sucesso");
-		RequestContext.getCurrentInstance().showMessageInDialog(mensagem);
-	}
-	public void destruirSessao(){ 
-		System.out.println("Destruir sessão");
-		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove("EfetuarPedidoBean");
-		
-	}
+	}	
 }

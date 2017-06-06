@@ -27,8 +27,9 @@ public class LoginServletController extends HttpServlet {
     }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String nome = request.getParameter("nome");
+		String nome = request.getParameter("usuario");
 		String senha = request.getParameter("senha");
+		
 		
 		Usuario usuario = new Usuario(nome,senha);
 		LoginDAO login = new LoginDAO();

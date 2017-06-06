@@ -17,6 +17,8 @@
 <body>
 	<header>
 		<img src="img/docevida.png" alt="Logo Doce Vida" id="logoDoceVida">
+		<br>
+		<br>
 		<span id="cliente">EDIÇÃO DE CLIENTES</span>
 	</header>
 	<section>
@@ -119,14 +121,7 @@
 					</div>
 				</div>
 		</section>
-		<div id="imgFooter">
-			<img src="img/reload.png" alt="Logo Reload" id="logoReload">
-		</div>
-	<footer>
-		© 2016 | RELOAD – Todos os direitos reservados
 		
-		
-	</footer>
 	
 </body>
 </html>

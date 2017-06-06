@@ -1,0 +1,11 @@
+h:body{
+	background-color: azure;
+}
+img[id="logoDoceVida"]{
+	width: 10%;
+	margin-left:33%;
+}
+
+footer{
+	text-align:center;
+}

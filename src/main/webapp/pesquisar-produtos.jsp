@@ -66,11 +66,11 @@
 			      		<tbody>
 			      		<c:forEach var="produto" items="${listaProdutos}" >
 			      			<tr>
-			      				<td>${produto.nmproduto}</td>
-			      				<td>${produto.vlunit}</td>
-			      				<td>${produto.tam}</td>
+			      				<td>${produto.nmProduto}</td>
+			      				<td>${produto.valorUnitario}</td>
+			      				<td>${produto.tamanho}</td>
 			      				
-			      				<td>${produto.quant}</td>
+			      				<td>${produto.quantidadeEstoque}</td>
 			      				<td><a href="<c:url value="EditarProdutoServlet"/>?id=${produto.id}" 
 						    		title="Produto ${produto.id}" >
 						    		<button type="button" class="btn btn-success" value="Editar">Editar</button>
@@ -94,14 +94,7 @@
 			 </div>
 		  	<button id="voltar" class="btn btn-danger btn-md" value="voltar" onclick="voltar();">Voltar ao Início</button>
 		
-<div id="imgFooter">
-			<img src="img/reload.png" alt="Logo Reload" id="logoReload">
-		</div>
-	<footer>
-		© 2016 | RELOAD – Todos os direitos reservados
-		
-		
-	</footer>			 
+			 
      
 </body>
 </html>

@@ -133,7 +133,7 @@ public class ProdutoDAO implements DAOGenerico<Produto>{
 	public Produto findById(String id) {
 		String sql = "SELECT * from Produtos where id_produto = "+id;
 		
-		Produto item = new Produto();
+		Produto produto = new Produto();
 		try{
 			 ps = (PreparedStatement) con.prepareStatement(sql);
 			 rs = ps.executeQuery();
@@ -145,13 +145,13 @@ public class ProdutoDAO implements DAOGenerico<Produto>{
 		    	 BigDecimal vlunit = rs.getBigDecimal("vl_unitario");
 		    	 String obs = rs.getString("dc_observacao");
 		    	 
-		    	 item.setId(idproduto);
-		    	 item.setNmProduto(nmproduto);
-		    	 item.setTamanho(tam);
-		    	 item.setQuantidadeEstoque(quant);
-		    	 item.setValorUnitario(vlunit);
+		    	 produto.setId(idproduto);
+		    	 produto.setNmProduto(nmproduto);
+		    	 produto.setTamanho(tam);
+		    	 produto.setQuantidadeEstoque(quant);
+		    	 produto.setValorUnitario(vlunit);
 		    	 
-		    	 item.setObservacao(obs);
+		    	 produto.setObservacao(obs);
 		    	 
 		     }
 		    
@@ -162,7 +162,7 @@ public class ProdutoDAO implements DAOGenerico<Produto>{
 			e.printStackTrace();
 		}
 		
-		return item;
+		return produto;
 	}
 
 	public List<Produto> findByName(String valor) {
@@ -170,9 +170,9 @@ public class ProdutoDAO implements DAOGenerico<Produto>{
 		
 		String sql = "SELECT id_produto, nm_produto, dc_tamanho,qt_quantidade,vl_unitario from Produtos "
 				+ "where nm_produto = '"+valor+"' and st_status=true";
-		
+		System.out.println(sql);
 		Produto produto = new Produto();
-		List<Produto> items = new ArrayList<>();
+		List<Produto> produtos = new ArrayList<>();
 		try{
 			
 			 ps = (PreparedStatement) con.prepareStatement(sql);
@@ -190,7 +190,7 @@ public class ProdutoDAO implements DAOGenerico<Produto>{
 		    	 produto.setQuantidadeEstoque(quant);
 		    	 produto.setValorUnitario(vlunit);
 		    	
-		    	 items.add(produto);
+		    	 produtos.add(produto);
 		     }
 		    
 		     rs.close();
@@ -200,7 +200,7 @@ public class ProdutoDAO implements DAOGenerico<Produto>{
 			e.printStackTrace();
 		}
 		
-		return items;
+		return produtos;
 	}
 
 

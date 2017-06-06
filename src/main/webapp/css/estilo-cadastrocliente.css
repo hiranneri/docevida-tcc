@@ -1,3 +1,7 @@
+body{
+	background-image: url("../img/fundo.jpg");
+}
+
 @media (min-width : 320px)  and (max-width: 479px) {
 	img[id="logoDoceVida"]{
 		margin-left: 12%;
@@ -39,14 +43,12 @@
 	}
 
 }
-body{
-	background-color: rgb(174,211,246);
-}
+
 header{
 	margin-bottom: 2%;
 }
 img[id="logoDoceVida"]{
-	margin-left: 2%;
+	margin-left: 40%;
 	width: 10%;
 	margin-top: 2%;
 	margin-right: 30%
@@ -57,10 +59,12 @@ span[id="cliente"]{
 	font-weight: bolder;
 	font-size: 16px;
 	font-family: "Calibri";
+	margin-left: 36%;
 }
 
 label{
 	margin-top: 1%;
+	font-size:110%;
 }
 input[type="text"]{
 	width: 50%;

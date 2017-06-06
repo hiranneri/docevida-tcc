@@ -39,32 +39,32 @@ public class CadastroProdutoServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		Produto novoProduto = new Produto();
 		//Nmproduto, quant, tam, obs, vlunit
-		String nmproduto, tam, obs;
-		int quant = 0;
-		BigDecimal vlunit = new BigDecimal(0);
+		String nmproduto, tamanho, observacao;
+		int quantidadeEstoque = 0;
+		
 		nmproduto = request.getParameter("nmproduto");
-		tam = request.getParameter("tam");
+		tamanho = request.getParameter("tam");
 		
 		String num = request.getParameter("quant");
 		if(num.equals("")|| num.equals(null)){
 			num = "0";
 		}
-		quant = Integer.parseInt(num);
+		quantidadeEstoque = Integer.parseInt(num);
 		
-		String num2 = request.getParameter("vlunit");
-		if(num2.equals("")|| num2.equals(null)){
-			num2 = "0";
+		String strValorUnitario = request.getParameter("vlunit");
+		if(strValorUnitario.equals("")|| strValorUnitario.equals(null)){
+			strValorUnitario = "0";
 		}
-		num2 = num2.replace(",", ".");
-		System.out.println(num2);
+		strValorUnitario = strValorUnitario.replace(",", ".");
+		BigDecimal valorUnitario = new BigDecimal(strValorUnitario);
 		
-		obs = request.getParameter("obs");
+		observacao = request.getParameter("obs");
 
 		novoProduto.setNmProduto(nmproduto);
-		novoProduto.setQuantidadeEstoque(quant);
-		novoProduto.setTamanho(tam);
-		novoProduto.setValorUnitario(vlunit);
-		novoProduto.setObservacao(obs);
+		novoProduto.setQuantidadeEstoque(quantidadeEstoque);
+		novoProduto.setTamanho(tamanho);
+		novoProduto.setValorUnitario(valorUnitario);
+		novoProduto.setObservacao(observacao);
 	
 		
 		String resposta = inserirProduto.inserir(novoProduto);

@@ -1,60 +1,105 @@
 <!DOCTYPE html>
-<html>
- <head>
- <meta charset="utf-8">
- <meta name="viewport" content="width=device-width, initial-scale=1">
- <title>Doce Vida</title>
- <link rel="stylesheet" href="css/bootstrap.css">
- <link rel="stylesheet" href="css/estilo-index.css"></link>
- <script src="js/bootstrap.js"></script>
- <script src="js/jquery.min.js"></script> 
+<html lang="en">
 
- <script src="js/Controller.js"></script>
- 
-</head>
-<body>
-	<header>
-			<img src="img/docevida.png" alt="Logo Doce Vida" id="logoDoceVida"/>
-			
-	</header>
-	<section>
-		<div class="container">
-			<div class="col-xs-12">
-				<div class="row">
-					<form action="LoginServletController" method="post" name="formLogin">
-						<span id="login">Digite o seu nome e a sua senha para acessar ao sistema</span>
-						<!--
-						<div class="form-group">
-							<div class="col-xs-12">
-								<input type="text" id="nome" name="nome" class="form-control" required><br>
-							</div>
-						</div>
-					-->
-	
-					<div class="input-group">
-							<span class="input-group-addon" id="txtLogin"><i class="fa fa-user"></i></span>
-							<input type="text" class="form-control" name="nome" placeholder="Nome">
-					</div>
-						
-					<div class="input-group">
-							<span class="input-group-addon" id="txtLogin"><i class="fa fa-user"></i></span>
-							<input type="password" class="form-control" name="senha" placeholder="Senha">
-					</div>
-						<div class="col-xs-12">
-						
-						</div>
-						<button type="submit" class="btn btn-success btn-lg">Acessar</button>
+    <head>
 
-					</form>
-				</div>
-			</div>
-		</div>
-			
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Doce Vida</title>
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" href="assets/css/form-elements.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+		<link rel="stylesheet" href="css/estilo-index.css">
 		
-	</section>
-	<div id="imgFooter">
-			<img src="img/reload.png" alt="Logo Reload" id="logoReload">
-		</div>
-	
-</body>
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <!-- Favicon and touch icons -->
+        <link rel="shortcut icon" href="assets/ico/favicon.png">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+
+    </head>
+
+    <body>
+        <header>
+            <img src="img/docevida.png" alt="Logo Doce Vida" id="logoDoceVida"/>
+            
+        </header>
+        <!-- Top content -->
+        <div class="top-content">
+        	
+            <div class="inner-bg">
+                <div class="container">
+                	
+                    <div class="row">
+                        <div class="col-sm-5" id="boxLogin">
+                        	
+                        	<div class="form-box">
+	                        	<div class="form-top">
+	                        		<div class="form-top-left">
+	                        			<h3>Doce Vida</h3>
+	                            		<p>Digite o seu usuário e senha:</p>
+	                        		</div>
+	                        		<div class="form-top-right">
+	                        			<i class="fa fa-key"></i>
+	                        		</div>
+	                            </div>
+	                            <div class="form-bottom">
+				                    <form role="form" action="LoginServletController" method="post" class="login-form">
+				                    	<div class="form-group">
+				                    		<label class="sr-only" for="usuario">Usuário</label>
+				                        	<input type="text" name="usuario" placeholder="Usuário..." class="form-username form-control" id="usuario">
+				                        </div>
+				                        <div class="form-group">
+				                        	<label class="sr-only" for="form-password">Senha</label>
+				                        	<input type="password" name="senha" placeholder="Senha..." class="form-password form-control" id="senha">
+				                        </div>
+				                        <button type="submit" class="btn">Acessar</button>
+				                    </form>
+			                    </div>
+		                    </div>
+	                        
+                        </div>
+                        
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+
+        <!-- Footer -->
+        <footer>
+        	<div id="imgFooter">
+                <img src="img/reload.png" alt="Logo Reload" id="logoReload">
+            </div>
+
+        	
+        </footer>
+
+        <!-- Javascript -->
+        <script src="assets/js/jquery-1.11.1.min.js"></script>
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="assets/js/jquery.backstretch.min.js"></script>
+        <script src="assets/js/scripts.js"></script>
+        
+        <!--[if lt IE 10]>
+            <script src="assets/js/placeholder.js"></script>
+        <![endif]-->
+
+    </body>
+
 </html>

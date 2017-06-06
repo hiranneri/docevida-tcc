@@ -5,8 +5,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.model.SelectItem;
 
 import org.primefaces.context.RequestContext;
 
@@ -29,104 +31,26 @@ public class PesquisarPedidoBean implements Serializable{
 	private Date dataFim;
 	private boolean isPedido;
 	private String idDoPedido;
-	
 	private PedidoDAO service;
-	private int numeroRegistrosLocalizados;
+	private int numeroRegistrosLocalizados=0;
+	private List<String> parametros;
+	private String[] selectedCities2;
 	
 	public PesquisarPedidoBean(){
 	
 		this.numeroRegistrosLocalizados = 0;
 	}
 	
+	@PostConstruct
+    public void init() {
+        parametros = new ArrayList<String>();
+        parametros.add("Cliente");
+        parametros.add("Data");
+        parametros.add("Pedido");
+     }
 		
-	public List<Pedido> getPedidosLocalizados() {
-		return pedidosLocalizados;
-	}
 
-
-	public void setPedidosLocalizados(List<Pedido> pedidosLocalizados) {
-		this.pedidosLocalizados = pedidosLocalizados;
-	}
-
-
-	public boolean isCliente() {
-		return isCliente;
-	}
-
-
-	public void setCliente(boolean isCliente) {
-		this.isCliente = isCliente;
-	}
-
-
-	public String getCliente() {
-		return cliente;
-	}
-
-
-	public void setCliente(String cliente) {
-		this.cliente = cliente;
-	}
-
-
-	public boolean isData() {
-		return isData;
-	}
-
-
-	public void setData(boolean isData) {
-		this.isData = isData;
-	}
-
-
-	public Date getDataInicio() {
-		return dataInicio;
-	}
-
-
-	public void setDataInicio(Date dataInicio) {
-		this.dataInicio = dataInicio;
-	}
-
-
-	public Date getDataFim() {
-		return dataFim;
-	}
-
-
-	public void setDataFim(Date dataFim) {
-		this.dataFim = dataFim;
-	}
-
-
-	public boolean isPedido() {
-		return isPedido;
-	}
-
-
-	public void setPedido(boolean isPedido) {
-		this.isPedido = isPedido;
-	}
-
-
-	public String getIdDoPedido() {
-		return idDoPedido;
-	}
-
-
-	public void setIdDoPedido(String idDoPedido) {
-		this.idDoPedido = idDoPedido;
-	}
-
-
-	public int getNumeroRegistrosLocalizados() {
-		return this.pedidosLocalizados.size();
-	}
-
-	public void setNumeroRegistrosLocalizados(int numeroRegistrosLocalizados) {
-		this.numeroRegistrosLocalizados = numeroRegistrosLocalizados;
-	}
-
+/*
 	public void pesquisarPedidos(){
 		System.out.println("pesquisando...");
 		pedidosLocalizados = new ArrayList<>();
@@ -149,5 +73,5 @@ public class PesquisarPedidoBean implements Serializable{
 	public void selecionar(Pedido pedido){
 		RequestContext.getCurrentInstance().closeDialog(pedido);
 	}
-	
+	*/
 }

@@ -61,7 +61,7 @@ public class SelecaoProdutoBean implements Serializable {
 		setListaProdutosPesquisados(service.findByName(this.valor));
 		this.setNumeroRegistrosLocalizados(this.getProdutosPesquisados().size());
 		for(Produto c:this.produtosPesquisados){
-			System.out.println(c.getNmProduto());
+			System.out.println(c.getId());
 		}
 		
 	}
