@@ -109,7 +109,7 @@ public class ClienteDAO implements DAOGenerico<Cliente> {
 					"SELECT id_Cliente, nm_cliente, dc_endereco, dc_cidade,"
 					+ " nm_telefone, nm_celular from Clientes where st_status=true and "
 					+ param+" like '%"+valor+"%';";
-			
+			System.out.println(sql);
 			 
 			ps  = (PreparedStatement) con.prepareStatement(sql);
 			 rs = ps.executeQuery();
@@ -131,6 +131,9 @@ public class ClienteDAO implements DAOGenerico<Cliente> {
 				novoCliente.setCelular(cel);
 				
 				clientesLocalizados.add(novoCliente);
+			}
+			for(Cliente cliente:clientesLocalizados){
+				System.out.println(cliente.getNome());
 			}
 			rs.close();
 			ps.close();

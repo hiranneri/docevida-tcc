@@ -95,14 +95,7 @@
 			 	
 			<button id="voltar" class="btn btn-danger btn-lg" value="voltar" onclick="voltar();">Voltar ao Início</button>
 			 
-<div id="imgFooter">
-			<img src="img/reload.png" alt="Logo Reload" id="logoReload">
-		</div>
-	<footer>
-		© 2016 | RELOAD – Todos os direitos reservados
-		
-		
-	</footer>			 
+		 
      
 </body>
 </html>

@@ -56,3 +56,115 @@ img[id="logoReload"]{
 	font-weight: bold;
 	font-size: 120%;
 }
+
+#btCadastrarProduto{
+	width: 40%;
+	height: 200px;
+	margin-right: 20%;
+	margin-top: 2%;
+	background-color: #98e0d5;
+	border: 1px solid;
+	background-image: url(../img/cadastro.png);
+	background-repeat: no-repeat;
+	background-position-x: 50%;
+	background-position-y: 6%;
+	font-weight: bolder;
+	font-size: 119%;
+	float: left;
+}
+#btPesquisarProduto{
+	width: 40%;
+	height:200px;
+	background-color: #98e0d5;
+	background-position-x: 50%;
+	background-position-y: 6%;
+	border: 1px solid;
+	background-image: url(../img/pesquisar.png);
+	background-repeat: no-repeat;
+	font-weight: bolder;
+	font-size: 119%;
+}
+#btCadastrarCliente{
+	width: 40%;
+	height: 200px;
+	margin-right: 18%;
+	margin-top: 2%;
+	background-color: #98e0d5;
+	border: 1px solid;
+	background-image: url(../img/cadastro.png);
+	background-repeat: no-repeat;
+	background-position-x: 50%;
+	background-position-y: 6%;
+	font-weight: bolder;
+	font-size: 119%;
+	float: left;
+}
+#btPesquisarCliente{
+	width: 40%;
+	height: 200px;
+	margin-top: 2%;
+	background-color: #98e0d5;
+	border: 1px solid;
+	background-image: url(../img/pesquisar.png);
+	background-repeat: no-repeat;
+	background-position-x: 50%;
+	background-position-y: 6%;
+	font-weight: bolder;
+	font-size: 119%;
+}
+#btPedido{
+	width: 70%;
+	height: 200px;
+	margin-left: 65%;
+	margin-top: 1%;
+	margin-bottom: 3%;		
+	background-color: #98e0d5;
+	border: 1px solid;
+	background-image: url(../img/relatorio.png);
+	background-repeat: no-repeat;
+	background-position-x: 50%;
+	background-position-y: 6%;
+	font-weight: bolder;
+	font-size: 119%;
+}
+#btSair{
+	float: right;
+	margin-top: -20%;
+	margin-right: -107%;
+	background-color: red;
+	font-weight: bolder;
+	width: 10%;
+	height: 50px;
+}
+
+ @media only screen and (max-width: 680px) {
+ 	#logoDoceVida{
+ 		width: 25%;
+ 	}
+
+	#btCadastrarProduto{
+		
+		width: 100%;
+}
+	#btPesquisarProduto{
+		
+		width: 100%;
+}
+	#btCadastrarCliente{
+		margin-left: 4%;
+		width: 90%;
+	}
+	#btPesquisarCliente{
+		margin-left: 4%;
+		
+		width: 90%;
+	}
+	#btPedido{
+		margin-left: 4%;
+		width: 90%;
+	}
+	#btSair{
+		margin-right: 4%;
+		width: 15%;
+	}
+}

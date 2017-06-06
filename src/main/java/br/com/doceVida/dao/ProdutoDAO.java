@@ -93,9 +93,8 @@ public class ProdutoDAO implements DAOGenerico<Produto>{
 			}
 					
 			String sql=
-					"SELECT id_produto, nm_produto, dc_tamanho, qt_quantidade, vl_unitario, dc_observacao "+
-					 " from Produtos where "
-					+ param +" like '%"+ valor +"%' and st_status = 1;";
+					"SELECT id_produto, nm_produto, dc_tamanho, qt_quantidade, vl_unitario, dc_observacao "
+					+"from Produtos where "+ param +" like '%"+ valor +"%' and st_status = 1;";
 			
 			 ps = (PreparedStatement) con.prepareStatement(sql);
 			 rs = ps.executeQuery();
@@ -119,6 +118,7 @@ public class ProdutoDAO implements DAOGenerico<Produto>{
 				
 				produtosLocalizados.add(novoProduto);
 			}
+			
 			rs.close();
 			ps.close();
 			
@@ -171,13 +171,14 @@ public class ProdutoDAO implements DAOGenerico<Produto>{
 		String sql = "SELECT id_produto, nm_produto, dc_tamanho,qt_quantidade,vl_unitario from Produtos "
 				+ "where nm_produto = '"+valor+"' and st_status=true";
 		System.out.println(sql);
-		Produto produto = new Produto();
+		Produto produto;
 		List<Produto> produtos = new ArrayList<>();
 		try{
 			
 			 ps = (PreparedStatement) con.prepareStatement(sql);
 			 rs = ps.executeQuery();
 		     while(rs.next()) {
+		    	 produto = new Produto();
 		    	 long idProduto = rs.getLong("id_produto");
 		    	 String nome = rs.getString("nm_produto");
 		    	 String tamanho = rs.getString("dc_tamanho");
@@ -192,6 +193,10 @@ public class ProdutoDAO implements DAOGenerico<Produto>{
 		    	
 		    	 produtos.add(produto);
 		     }
+		     for(Produto p:produtos){
+					System.out.println(p.getNmProduto());
+					
+				}
 		    
 		     rs.close();
 		     ps.close();
