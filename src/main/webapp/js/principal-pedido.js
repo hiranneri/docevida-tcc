@@ -2,7 +2,7 @@ function efetuarPedido () {
 	// body...
 	location.href="efetuar-pedido.xhtml";
 }
-function pesquisarProduto () {
+function pesquisarPedido () {
 	// body...
-	location.href="pesquisar-pedido.xhtml";
+	location.href="pesquisa-pedido.xhtml";
 }

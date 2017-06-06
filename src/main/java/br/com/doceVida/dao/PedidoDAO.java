@@ -5,12 +5,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import br.com.doceVida.model.Cliente;
 import br.com.doceVida.model.Item;
 import br.com.doceVida.model.Pedido;
-import br.com.doceVida.model.Produto;
 import br.com.doceVida.testes.ConnectionFactory;
 
 public class PedidoDAO implements DAOGenerico<Pedido> {
@@ -140,7 +141,12 @@ public class PedidoDAO implements DAOGenerico<Pedido> {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	
+	public List<Pedido> procurarPeloID (String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 	@Override
 	public List<Pedido> listar(String param, String valor) {
 		// TODO Auto-generated method stub
@@ -169,6 +175,59 @@ public class PedidoDAO implements DAOGenerico<Pedido> {
 	public List<Pedido> pesquisarPorData(Date dataInicio, Date dataFim) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public List<Pedido> buscarPorData(Date dataInicio, Date dataFim) {
+		// TODO Auto-generated method stub
+		List<Pedido> pedidos = new ArrayList<>();
+		
+		try{	
+			
+			String sql="select Pedido.id_pedido, Pedido.dt_pedido, Pedido.dt_entrega, "
+					+ "Pedido.vl_pedido, Clientes.nm_cliente from Pedido "
+					+ "left join Clientes "
+					+ "on Clientes.id_cliente = Pedido.Clientes_id_Cliente"
+					+ "  where dt_pedido between ? and ?";
+			/*select id_pedido from Pedido where dt_pedido between '2017-05-28'and '2017*/
+			System.out.println(sql);
+			java.sql.Date dataInicioSQL = new java.sql.Date(dataInicio.getTime());
+			java.sql.Date dataFimSQL = new java.sql.Date(dataFim.getTime());
+			Connection connection = ConnectionFactory.getConnection();
+			PreparedStatement ps = connection.prepareStatement(sql);
+			ps.setDate(1, dataInicioSQL);
+			ps.setDate(2, dataFimSQL);
+			ResultSet rs = ps.executeQuery();
+			Cliente cliente; 
+			while(rs.next()){
+				long id = rs.getLong("id_pedido");
+				Date dataPedido = rs.getDate("dt_pedido");
+				Date dataEntrega = rs.getDate("dt_entrega");
+				BigDecimal valorPedido = rs.getBigDecimal("vl_pedido");
+				String nomeCliente = rs.getString("nm_cliente");
+				
+				Pedido p = new Pedido();
+				
+				p.setId(id);
+				p.setDataPedido(dataPedido);
+				p.setDataEntrega(dataEntrega);
+				p.setValorTotal(valorPedido);
+				System.out.println(p.getValorPedido());
+				cliente = new Cliente();
+				cliente.setNome(nomeCliente);
+				p.setCliente(cliente);
+				
+				pedidos.add(p);
+			}
+			
+			rs.close();
+			ps.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return pedidos;
+		
 	}
 
 }

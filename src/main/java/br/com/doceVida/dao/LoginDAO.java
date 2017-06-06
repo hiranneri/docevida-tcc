@@ -27,13 +27,15 @@ public class LoginDAO {
 			 rs = ps.executeQuery();
 			 String nomeDigitado = user.getNome();
 			 String senhaDigitada = user.getSenha();
+			
 		     while(rs.next()) {
 		    	 String nome = rs.getString("nm_usuario");
 		    	 String senha  = rs.getString("ds_senha");
+		    	 boolean status = rs.getBoolean("st_status");
 		    	 daoUsuario = new Usuario(nome, senha);
 		    	 
 		    	 if(nomeDigitado.equals(daoUsuario.getNome()) 
-			    		 && senhaDigitada.equals(daoUsuario.getSenha())){
+			    		 && senhaDigitada.equals(daoUsuario.getSenha()) && status==true){
 			    	 return true;
 			     }		    	 
 		     }
@@ -57,6 +59,26 @@ public class LoginDAO {
 		ps.setString(1, user.getNome());
 		ps.setString(2, user.getSenha());
 		ps.setBoolean(3, true);
+		
+		ps.executeUpdate();
+		this.excluirADMIN();
+		ps.close();
+		
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+	
+	
+
+	}
+	public void excluirADMIN() {
+		try{
+		// TODO Auto-generated method stub
+		ps = con.prepareStatement(
+				"UPDATE Usuario set st_status = ? where nm_usuario = ? and ds_senha = ?");
+		ps.setBoolean(1, false);
+		ps.setString(2, "admin");
+		ps.setString(3, "admin");
 		
 		ps.executeUpdate();
 		ps.close();

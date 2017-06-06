@@ -1,4 +1,24 @@
 @CHARSET "UTF-8";
+
+header{
+	text-align: center;
+}
+img[id="logoDoceVida"]{
+	margin-left: -10%;
+	width: 10%;
+	margin-top: 1%;
+
+}
+
+
+
+img[id="logoReload"]{
+	margin-top: 1%;
+	margin-left: 1%;
+	width: 12%;
+}
+
+
 #mensagem{
 	color: red;
 	font-weight: bold;

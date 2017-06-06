@@ -65,6 +65,9 @@ public class Pedido implements Serializable {
 	public BigDecimal getValorTotal() {
 		return calcularValorTotal();
 	}
+	public BigDecimal getValorPedido(){
+		return this.valorTotal;
+	}
 	public void setValorTotal(BigDecimal valorTotal) {
 		this.valorTotal = valorTotal;
 	}

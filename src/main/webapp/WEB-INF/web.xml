@@ -30,4 +30,14 @@
     <servlet-name>Faces Servlet</servlet-name>
     <url-pattern>*.xhtml</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PesquisarPedidoServlet</display-name>
+    <servlet-name>PesquisarPedidoServlet</servlet-name>
+    <servlet-class>br.com.doceVida.controller.PesquisarPedidoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PesquisarPedidoServlet</servlet-name>
+    <url-pattern>/PesquisarPedidoServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
