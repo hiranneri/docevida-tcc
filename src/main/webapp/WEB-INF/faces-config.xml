@@ -12,5 +12,47 @@
 	        <default-locale>pt_BR</default-locale>
 	    </locale-config>
 	</application>
-
+	<!-- Managed Beans -->
+    <managed-bean>
+        <managed-bean-name>PedidoBean</managed-bean-name>
+        <managed-bean-class>
+            br.com.doceVida.controller.pedido.PedidoBean
+        </managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>SelecaoClienteBean</managed-bean-name>
+        <managed-bean-class>
+            br.com.doceVida.controller.pedido.SelecaoClienteBean
+        </managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>SelecaoProdutoBean</managed-bean-name>
+        <managed-bean-class>
+            br.com.doceVida.controller.pedido.SelecaoProdutoBean
+        </managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>PesquisaPedidoBean</managed-bean-name>
+        <managed-bean-class>
+            br.com.doceVida.controller.pedido.PesquisaPedidoBean
+        </managed-bean-class>
+        <managed-bean-scope>none</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>ConfirmaPedidoBean</managed-bean-name>
+        <managed-bean-class>
+            br.com.doceVida.controller.pedido.ConfirmaPedidoBean
+        </managed-bean-class>
+        <managed-bean-scope>none</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>ConfirmaPedidoDTO</managed-bean-name>
+        <managed-bean-class>
+            br.com.doceVida.util.ConfirmaPedidoDTO
+        </managed-bean-class>
+        <managed-bean-scope>none</managed-bean-scope>
+    </managed-bean>
 </faces-config>

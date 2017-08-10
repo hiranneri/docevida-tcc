@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<h:outputText value="Data do Pedido: " class="labels"/>
+    <h:outputText value="#{PedidoBean.dataAtual}" class="labels"></h:outputText>
+    <p:spacer height="20"></p:spacer>
+	
+    <p:outputLabel for="dataEntrega" value="Data da Entrega:" class="labels"/>
+    <p:calendar id="dataEntrega" value="#{PedidoBean.dataDaEntrega}" mindate="#{PedidoBean.dataAtual}"
+     pattern="dd/MM/yyyy" mask="true" converter="localDateConverter" required="true" />
+    <p:spacer height="20"></p:spacer>
+  
+	
+	<h:outputText value="Cliente: " class="labels"></h:outputText>
+    <h:outputText value="#{PedidoBean.cliente.nome}" id="cliente" class="labels"></h:outputText>
+    
+    <p:commandButton icon="ui-icon-search" title="Pesquisar Clientes" 
+ 		action="#{PedidoBean.abrirDialogo}" process="@this">
+		<p:ajax event="dialogReturn" listener="#{PedidoBean.clienteSelecionado}" 
+	 		process="@this" update="cliente" />	
+    </p:commandButton>
+	<br></br>
+	<br></br>
+    <h:panelGroup id="panelProduto">
+    <p:outputLabel for="produto" value="Produto:" class="labels"></p:outputLabel>
+    <h:inputText id="produto" value="#{PedidoBean.produto.nmProduto}" 
+    	rendered="#{PedidoBean.produto!=null}"></h:inputText>
+
+	<p:spinner id="ajaxSpinner" value="#{PedidoBean.quantidadeDoItem}" min="1" 
+    	rendered="#{PedidoBean.produto!=null}" >
+   	</p:spinner>
+  	<p:growl id="growlProduto" showDetail="true" />
+	<p:commandButton icon="ui-icon-search" title="Pesquisar Produtos" 
+		action="#{PedidoBean.abrirDialogoProduto}" process="@this" update="panelProduto">
+	 		<p:ajax event="dialogReturn" listener="#{PedidoBean.produtoSelecionado}" 
+	 		process="@this" update="panelProduto" />								
+    			
+    </p:commandButton>
+    	
+    <p:commandButton icon="ui-icon-plusthick" title="Adicionar Item" 
+       actionListener="#{PedidoBean.adicionarItems}"  value="Adicionar" 
+       update="tblProdutos" ajax="false" rendered="#{PedidoBean.produto!=null}"  >
+       </p:commandButton>
+    </h:panelGroup>     		
+    
+
+</ui:composition>

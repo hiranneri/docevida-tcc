@@ -9,7 +9,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.doceVida.model.Item;
 import br.com.doceVida.model.Produto;
 import br.com.doceVida.testes.ConnectionFactory;
 
@@ -19,14 +18,15 @@ public class ProdutoDAO implements DAOGenerico<Produto>{
 	
 	private ResultSet rs = null;
 	
-	private Connection con = ConnectionFactory.getInstance().getConnection();
+	
 
 	@Override
 	public String inserir(Produto produto) {
 		
 		try {
-			
-			ps = con.prepareStatement(
+			Connection conexao=null;
+			conexao = ConnectionFactory.getConnection();
+			ps = conexao.prepareStatement(
 					"INSERT INTO Produtos (nm_produto, dc_tamanho,qt_quantidade, vl_unitario, "
 					+ "dc_observacao, st_status) VALUES (?,?,?,?,?,?)");
 			ps.setString(1, produto.getNmProduto());
@@ -41,23 +41,25 @@ public class ProdutoDAO implements DAOGenerico<Produto>{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "Cadastrado com sucesso";
+		return "Salvo com sucesso";
 		
 	}
 
 	
 	public int editar(Produto produto) {
-		// TODO Auto-generated method stub
 		try {
-			ps = con.prepareStatement(
+			Connection conexao=null;
+			conexao = ConnectionFactory.getConnection();
+			
+			ps = conexao.prepareStatement(
 					"UPDATE Produtos SET nm_produto = ?, dc_tamanho= ?, qt_quantidade=?, "
-					+ "vl_unitario=?, dc_observacao=? WHERE id_produto = " + produto.getId());
+					+ "vl_unitario=?, dc_observacao=? WHERE id_produto = ?");
 			ps.setString(1, produto.getNmProduto());
 			ps.setString(2, produto.getTamanho());
 			ps.setInt(3, produto.getQuantidadeEstoque());
 			ps.setBigDecimal(4, produto.getValorUnitario());
 			ps.setString(5, produto.getObservacao());
-			
+			ps.setLong(6, produto.getId());
 			ps.executeUpdate();
 			ps.close();
 			
@@ -71,7 +73,9 @@ public class ProdutoDAO implements DAOGenerico<Produto>{
 	@Override
 	public int excluir(int tipo) {
 		try{
-			ps = con.prepareStatement("UPDATE Produtos SET st_status= ? "
+			Connection conexao=null;
+			conexao = ConnectionFactory.getConnection();
+			ps = conexao.prepareStatement("UPDATE Produtos SET st_status= ? "
 					+ "WHERE id_produto = ?");
 			ps.setBoolean(1, false);
 			ps.setInt(2, tipo);
@@ -88,16 +92,14 @@ public class ProdutoDAO implements DAOGenerico<Produto>{
 	public List<Produto> listar(String param, String valor) {
 		List<Produto> produtosLocalizados = new ArrayList<>();
 		try {
-			if(param.equalsIgnoreCase("Nmproduto")){
-				param = "nm_produto";
-			}
-					
 			String sql=
-					"SELECT id_produto, nm_produto, dc_tamanho, qt_quantidade, vl_unitario, dc_observacao "
-					+"from Produtos where "+ param +" like '%"+ valor +"%' and st_status = 1;";
-			
-			 ps = (PreparedStatement) con.prepareStatement(sql);
-			 rs = ps.executeQuery();
+					"SELECT id_produto, nm_produto, dc_tamanho, qt_quantidade, vl_unitario,"
+					+ " dc_observacao from Produtos where nm_produto like '%?%' and st_status = 1;";
+			Connection conexao=null;
+			conexao = ConnectionFactory.getConnection();
+			ps = conexao.prepareStatement(sql);
+			ps.setString(1, valor);
+			rs = ps.executeQuery();
 			
 			while(rs.next()){
 				long id = rs.getLong("id_produto");
@@ -131,11 +133,13 @@ public class ProdutoDAO implements DAOGenerico<Produto>{
 
 	@Override
 	public Produto findById(String id) {
-		String sql = "SELECT * from Produtos where id_produto = "+id;
-		
+		String sql = "SELECT * from Produtos where id_produto = ?";
+		Connection con = null;
 		Produto produto = new Produto();
 		try{
-			 ps = (PreparedStatement) con.prepareStatement(sql);
+			con = ConnectionFactory.getConnection();
+			 ps = con.prepareStatement(sql);
+			 ps.setString(1, id);
 			 rs = ps.executeQuery();
 		     while(rs.next()) {
 		    	 long idproduto = rs.getLong("id_produto");
@@ -168,14 +172,16 @@ public class ProdutoDAO implements DAOGenerico<Produto>{
 	public List<Produto> findByName(String valor) {
 
 		
-		String sql = "SELECT id_produto, nm_produto, dc_tamanho,qt_quantidade,vl_unitario from Produtos "
-				+ "where nm_produto = '"+valor+"' and st_status=true";
-		System.out.println(sql);
+		String sql = "SELECT id_produto, nm_produto, dc_tamanho,qt_quantidade,vl_unitario "
+				+ "from Produtos where nm_produto = ? and st_status=true";
+		
 		Produto produto;
 		List<Produto> produtos = new ArrayList<>();
+		Connection con=null;
 		try{
-			
+			con=ConnectionFactory.getConnection();
 			 ps = (PreparedStatement) con.prepareStatement(sql);
+			 ps.setString(1, valor);
 			 rs = ps.executeQuery();
 		     while(rs.next()) {
 		    	 produto = new Produto();
@@ -193,10 +199,7 @@ public class ProdutoDAO implements DAOGenerico<Produto>{
 		    	
 		    	 produtos.add(produto);
 		     }
-		     for(Produto p:produtos){
-					System.out.println(p.getNmProduto());
-					
-				}
+		     
 		    
 		     rs.close();
 		     ps.close();

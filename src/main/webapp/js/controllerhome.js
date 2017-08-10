@@ -1,16 +1,26 @@
-function cadastraProduto () {
-	// body...
-	location.href="cadastro_produtos.html";
+function voltar(){
+	window.history.go(-1);
 }
-function pesquisaProduto () {
+function cadastrarProduto () {
 	// body...
-	location.href="pesquisar-produtos.jsp";
+	location.href="produto/cadastro_produtos.html";
+}
+function pesquisarProduto () {
+	// body...
+	location.href="produto/pesquisar-produtos.jsp";
 }
 function cadastraCliente () {
 	// body...
-	location.href="cadastro_clientes.html";
+	location.href="cliente/cadastro_clientes.html";
 }
-function pesquisaCliente () {
+function pesquisarCliente () {
 	// body...
-	location.href="pesquisar-clientes.jsp";
+	location.href="cliente/pesquisar-clientes.jsp";
+}
+function efetuarPedido(){
+	location.href="pedido/principal-pedido.html";
+}
+function sair() {
+	location.href="index.html";
+	
 }

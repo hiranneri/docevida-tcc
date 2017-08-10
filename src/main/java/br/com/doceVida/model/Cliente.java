@@ -8,7 +8,7 @@ public class Cliente implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private long id;
+	private Long id;
 	private String nome;
 	private String cpf;
 	private String cnpj;
@@ -22,10 +22,10 @@ public class Cliente implements Serializable {
 	private String email;
 	
 	
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getNome() {
@@ -95,6 +95,25 @@ public class Cliente implements Serializable {
 		this.email = email;
 	}
 	
-	
+	public boolean equals(Object obj) {
+	   
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Cliente outroCliente = (Cliente) obj;
+		if(id==outroCliente.id)
+			return true;
+		else
+			return false;
+	}
+	public static Cliente getClientePadrao(){
+		Cliente cliente = new Cliente();
+		cliente.setId(12L);
+		cliente.setNome("-");
+		return cliente;
+	}
 
 }

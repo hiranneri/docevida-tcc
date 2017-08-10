@@ -2,8 +2,8 @@ package br.com.doceVida.model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 
@@ -13,8 +13,8 @@ public class Pedido implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	private Long id;
-	private Date dataPedido;
-	private Date dataEntrega;
+	private LocalDate dataPedido;
+	private LocalDate dataEntrega;
 	private Cliente cliente;
 	private Produto produto;
 	private List<Item>itensDoPedido = new ArrayList<>();
@@ -32,16 +32,16 @@ public class Pedido implements Serializable {
 		this.id = id;
 	}
 
-	public Date getDataPedido()    {
+	public LocalDate getDataPedido()    {
 		return dataPedido;
 	}
-	public void setDataPedido(Date dataPedido) {
+	public void setDataPedido(LocalDate dataPedido) {
 		this.dataPedido = dataPedido;
 	}
-	public Date getDataEntrega() {
+	public LocalDate getDataEntrega() {
 		return dataEntrega;
 	}
-	public void setDataEntrega(Date dataEntrega) {
+	public void setDataEntrega(LocalDate dataEntrega) {
 		this.dataEntrega = dataEntrega;
 	}
 	public Cliente getCliente() {
@@ -101,7 +101,6 @@ public class Pedido implements Serializable {
 		for(Item item:this.itensDoPedido){
 			if(itemSelecionado.getCodigo() == item.getCodigo()){
 				this.itensDoPedido.remove(itemSelecionado);
-				System.out.println("Excluiu");
 				break;
 			}
 		}

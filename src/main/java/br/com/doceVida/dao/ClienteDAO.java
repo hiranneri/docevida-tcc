@@ -5,7 +5,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 
 
@@ -18,17 +17,16 @@ public class ClienteDAO implements DAOGenerico<Cliente> {
 	
 	private ResultSet rs = null;
 	
-	private Connection con = ConnectionFactory.getInstance().getConnection();
-
+	
 	@Override
 	public String inserir(Cliente cliente) {
-		
+		String sql = "INSERT INTO Clientes (nm_cliente, dc_cnpj,dc_endereco, nm_casa, dc_bairro,"
+				+ "dc_cidade,dc_estado,nm_telefone, nm_celular, dc_email, st_status)"
+				+ "VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+		Connection conexao=null;
 		try {
-			
-			ps = con.prepareStatement(
-					"INSERT INTO Clientes (nm_cliente, dc_cnpj,dc_endereco, nm_casa, dc_bairro,"
-					+ "dc_cidade,dc_estado,nm_telefone, nm_celular, dc_email, st_status)"
-					+ "VALUES (?,?,?,?,?,?,?,?,?,?,?)");
+			conexao = ConnectionFactory.getConnection();
+			ps = conexao.prepareStatement(sql);
 			ps.setString(1, cliente.getNome());
 			ps.setString(2, cliente.getCpf());
 			ps.setString(3, cliente.getEndereco());
@@ -41,21 +39,23 @@ public class ClienteDAO implements DAOGenerico<Cliente> {
 			ps.setString(10, cliente.getEmail());
 			ps.setBoolean(11, true);
 			
-			ps.executeUpdate();
+			ps.execute();
 			ps.close();
+			return "Salvo com sucesso";
+		} catch (SQLException e) {
 			
-		} catch (Exception e) {
-			e.printStackTrace();
+			throw new RuntimeException(); 
 		}
-		return "Cadastrado com sucesso";
 		
 	}
 
 	@Override
 	public int editar(Cliente cliente) {
-		// TODO Auto-generated method stub
+		Connection conexao=null;
 		try {
-			ps = con.prepareStatement(
+			conexao = ConnectionFactory.getConnection();
+		
+			ps = conexao.prepareStatement(
 					"UPDATE Clientes SET nm_cliente = ?, dc_cnpj= ?, dc_endereco=?, nm_casa=?, dc_bairro=?, dc_cidade=?, dc_estado=?, "
 					+ " nm_telefone=?,  nm_celular=?, dc_email=? "
 					+ " WHERE id_Cliente = " + cliente.getId());
@@ -83,7 +83,10 @@ public class ClienteDAO implements DAOGenerico<Cliente> {
 	@Override
 	public int excluir(int tipo) {
 		try{
-			ps = con.prepareStatement("UPDATE Clientes SET st_status=? where id_Cliente = ?");
+			Connection conexao=null;
+			conexao = ConnectionFactory.getConnection();
+			
+			ps = conexao.prepareStatement("UPDATE Clientes SET st_status=? where id_Cliente = ?");
 			ps.setBoolean(1, false);
 			ps.setInt(2, tipo);
 			ps.executeUpdate();
@@ -109,10 +112,10 @@ public class ClienteDAO implements DAOGenerico<Cliente> {
 					"SELECT id_Cliente, nm_cliente, dc_endereco, dc_cidade,"
 					+ " nm_telefone, nm_celular from Clientes where st_status=true and "
 					+ param+" like '%"+valor+"%';";
-			System.out.println(sql);
-			 
-			ps  = (PreparedStatement) con.prepareStatement(sql);
-			 rs = ps.executeQuery();
+			Connection conexao=null;
+			conexao = ConnectionFactory.getConnection();
+			ps  = (PreparedStatement) conexao.prepareStatement(sql);
+			rs = ps.executeQuery();
 			
 			while(rs.next()){
 				long id = rs.getLong("id_Cliente");
@@ -132,9 +135,7 @@ public class ClienteDAO implements DAOGenerico<Cliente> {
 				
 				clientesLocalizados.add(novoCliente);
 			}
-			for(Cliente cliente:clientesLocalizados){
-				System.out.println(cliente.getNome());
-			}
+			
 			rs.close();
 			ps.close();
 			
@@ -151,10 +152,11 @@ public class ClienteDAO implements DAOGenerico<Cliente> {
 		
 		Cliente cliente = new Cliente();
 		try{
-			
-			 ps = (PreparedStatement) con.prepareStatement(sql);
-			 rs = ps.executeQuery();
-		     while(rs.next()) {
+			Connection conexao=null;
+			conexao = ConnectionFactory.getConnection();
+			ps = (PreparedStatement) conexao.prepareStatement(sql);
+			rs = ps.executeQuery();
+		    while(rs.next()) {
 		    	 long idCliente = rs.getLong("id_Cliente");
 		    	 String nome = rs.getString("nm_cliente");
 		    	 String cpf = rs.getString("dc_cnpj");
@@ -202,10 +204,10 @@ public class ClienteDAO implements DAOGenerico<Cliente> {
 			
 			String sql= "select id_Cliente, nm_cliente, dc_endereco "
 					+ "from Clientes where st_status = '1' limit = "+i;
-			
-			 
-			ps  = (PreparedStatement) con.prepareStatement(sql);
-			 rs = ps.executeQuery();
+			Connection conexao=null;
+			conexao = ConnectionFactory.getConnection();
+			ps  = (PreparedStatement) conexao.prepareStatement(sql);
+			rs = ps.executeQuery();
 			
 			while(rs.next()){
 				long id = rs.getLong("id_Cliente");
@@ -230,23 +232,27 @@ public class ClienteDAO implements DAOGenerico<Cliente> {
 		
 	}
 
-	public List<Cliente> findByName(String nomePesquisado){
+	public List<Cliente> pesquisarPeloNome(String nomePesquisado){
 		String sql = "SELECT id_Cliente, nm_cliente, dc_endereco from Clientes "
-				+ "where nm_cliente = '"+nomePesquisado+"' and st_status=true";
+				+ "where nm_cliente = ? and st_status=?";
 		
-		Cliente cliente = new Cliente();
+		
+		Cliente cliente;
 		List<Cliente> clientes = new ArrayList<>();
 		try{
-			
-			 ps = (PreparedStatement) con.prepareStatement(sql);
-			 rs = ps.executeQuery();
+			Connection conexao=null;
+			conexao = ConnectionFactory.getConnection();
+			ps = (PreparedStatement) conexao.prepareStatement(sql);
+			ps.setString(1, nomePesquisado);
+			ps.setBoolean(2, true);	
+			rs = ps.executeQuery();
 		     while(rs.next()) {
 		    	 long idCliente = rs.getLong("id_Cliente");
 		    	 String nome = rs.getString("nm_cliente");
 		    	
 		    	 String endereco = rs.getString("dc_endereco");
 		    	
-		    	 
+		    	 cliente = new Cliente();
 		    	 cliente.setId(idCliente);
 		    	 cliente.setNome(nome);
 		    	
@@ -259,7 +265,7 @@ public class ClienteDAO implements DAOGenerico<Cliente> {
 		     ps.close();
 		   
 		}catch(SQLException e){
-			e.printStackTrace();
+			throw new RuntimeException();
 		}
 		
 		return clientes;

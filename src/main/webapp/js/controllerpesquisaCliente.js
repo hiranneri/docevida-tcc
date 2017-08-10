@@ -18,5 +18,5 @@ function exibeTabela(){
 	document.getElementById("tabelaClientes").style.display="block";
 }
 function voltar(){
-		location.href="home.jsp";
+		location.href="../home.jsp";
 	}

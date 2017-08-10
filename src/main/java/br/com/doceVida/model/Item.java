@@ -5,18 +5,16 @@ import java.math.BigDecimal;
 
 public class Item implements Serializable{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private int codigo;
 	private Produto produto;
 	private Pedido pedido;
 	private int quantidade;
-	private BigDecimal valorUnitario = BigDecimal.ZERO;
+	private BigDecimal valorUnitario;
 	private BigDecimal subTotal;
 	public Item(){
 		this.quantidade =1;
+		this.valorUnitario = BigDecimal.ZERO;
 	}
 	
 	public int getCodigo() {
@@ -57,8 +55,16 @@ public class Item implements Serializable{
 		this.subTotal = subTotal;
 	}
 
-		
-	
+	/*
+	public boolean equals(Object obj) {
+	   
+		Item outroItem = (Item) obj;
+		if(outroItem.==obj.id)
+			return true;
+		else
+			return false;
+	}
+	*/
 
 
 

@@ -16,7 +16,15 @@ public class Produto implements Serializable {
     private String observacao;
    
 	
-	
+	public Produto(){
+		
+	}
+	public Produto(String nome,String tamanho,BigDecimal valor){
+		this.nmProduto=nome;
+		this.tamanho=tamanho;
+		this.valorUnitario=valor;
+	}
+    
 	public long getId() {
 		return id;
 	}

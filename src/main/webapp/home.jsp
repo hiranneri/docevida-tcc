@@ -9,10 +9,10 @@
  <meta name="viewport" content="width=device-width, initial-scale=1">
  <title>Home</title>
  <link rel="stylesheet" href="css/bootstrap.min.css"></link>
-  <link rel="stylesheet" href="css/estilo-editarproduto.css"></link>
+  <link rel="stylesheet" href="css/estilo-home.css"></link>
   <script src="js/jquery.min.js"></script>
  <script src="js/bootstrap.min.js"></script>
- <script src="js/controlleralterarProduto.js"></script>
+ <script src="js/controllerhome.js"></script>
 </head>
 <body>
 	<header>
